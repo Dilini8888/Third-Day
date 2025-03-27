@@ -1,0 +1,26 @@
+function[root]=falsePosition(x0,x1,step,epes)
+n=1;
+er=1;
+
+if g(x0)*g(x1)<0
+    while(n<=step && er>epes)
+        if g(x1)-g(x0)~=0
+            x2=x1-((f(x1)*(x1-x0))/(g(x1)-g(x0)))
+
+            if g(x0)*g(x2)<0
+                x1=x2
+            else
+                x0=x2
+            end
+            g(x2)
+            er=abs((x2-x1)/x2)
+            n=n+1
+
+        end
+    end
+    root=x2
+else
+    disp('Ther is no root.');
+end
+end
+
